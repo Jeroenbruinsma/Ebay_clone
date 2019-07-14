@@ -39,7 +39,7 @@ router.get('/advertisement',  function (req, res, next) {
 })
 
 router.get('/advertisementlist',  function (req, res, next) {
-    Advertisement.findAll({attributes: ['title', 'price']})
+    Advertisement.findAll({attributes: ['id','title', 'price']})
         .then(adv => {
             res.json({ Advertisement: adv })
         })
@@ -69,7 +69,7 @@ router.delete('/advertisement/:id', function (req, res, next) {
 router.get('/advertisement/:id', function (req, res, next) {
     Advertisement.findByPk(req.params.id)
         .then(list => {
-            res.json({ Playlist: list })
+            res.json({ adv: list })
         })
         .catch(err => {
             res.status(500).json({
